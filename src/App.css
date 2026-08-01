@@ -64,6 +64,14 @@ body {
   padding: 32px 20px 80px;
 }
 
+/* Los iconos miden 1em: se dimensionan con el font-size de quien los contiene
+   y toman su color, igual que hacía el emoji al que sustituyen. */
+.icon {
+  display: inline-block;
+  vertical-align: -0.125em;
+  flex-shrink: 0;
+}
+
 .sr-only {
   position: absolute;
   width: 1px;
@@ -295,7 +303,8 @@ body {
   align-items: center;
   justify-content: center;
   border-radius: 16px;
-  font-size: 1.2rem;
+  font-size: 1.15rem;
+  color: var(--accent);
   background: var(--surface);
   border: 1px solid var(--border-strong);
   box-shadow: 0 12px 26px -14px var(--shadow);
@@ -337,6 +346,9 @@ body {
   letter-spacing: 0.3px;
   color: var(--accent);
 }
+
+/* El chip usa un cuerpo pequeño; el icono necesita algo más para no perderse. */
+.hello-chip .icon { font-size: 1.2em; }
 
 .hero-name {
   font-size: 2.7rem;
@@ -422,7 +434,11 @@ body {
   transform: translateY(-2px);
 }
 
-.contact-icon { font-size: 0.9rem; }
+.contact-icon {
+  display: inline-flex;
+  font-size: 1rem;
+  color: var(--accent);
+}
 
 /* ===== BOTONES ===== */
 .btn {
@@ -464,7 +480,7 @@ body {
 
 .btn-primary:hover::after { left: 130%; }
 
-.btn-icon { font-size: 0.85rem; }
+.btn-icon { display: inline-flex; font-size: 0.95rem; }
 
 /* Versión compacta para la barra de navegación. */
 .btn-nav {
@@ -776,9 +792,10 @@ body {
 .project-card:hover .project-glow { opacity: 1; }
 
 .project-icon {
-  font-size: 1.6rem;
+  font-size: 1.55rem;
+  color: var(--accent);
   margin-bottom: 12px;
-  display: inline-block;
+  display: inline-flex;
   transition: transform 0.3s ease;
 }
 
@@ -798,7 +815,7 @@ body {
   padding: 20px;
 }
 
-.edu-icon { font-size: 1.5rem; flex-shrink: 0; }
+.edu-icon { display: flex; font-size: 1.5rem; color: var(--accent); flex-shrink: 0; }
 .edu-card strong { display: block; font-size: 0.95rem; color: var(--text); margin-bottom: 4px; }
 .edu-card em { display: block; font-style: normal; color: var(--accent); font-size: 0.84rem; margin-bottom: 4px; }
 .edu-card .period { font-size: 0.8rem; color: var(--text-dim); }
@@ -827,8 +844,17 @@ body {
   box-shadow: 0 12px 26px -18px var(--accent);
 }
 
-.cert-dl { margin-left: auto; font-size: 0.9rem; color: var(--text-dim); }
-.cert-badge > span:first-child { font-size: 1.05rem; }
+.cert-icon { display: inline-flex; font-size: 1.15rem; color: var(--accent); }
+
+.cert-dl {
+  display: inline-flex;
+  margin-left: auto;
+  font-size: 0.95rem;
+  color: var(--text-dim);
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.cert-badge:hover .cert-dl { color: var(--accent); transform: translateY(2px); }
 
 /* ===== SKILLS ===== */
 .skills-list {
@@ -938,7 +964,7 @@ body {
   .nav-btn { padding: 7px 12px; font-size: 0.78rem; }
   .theme-toggle { width: 32px; height: 32px; font-size: 0.85rem; }
   .btn-nav { padding: 8px 12px; }
-  .btn-nav .btn-icon { display: inline; font-size: 0.9rem; }
+  .btn-nav .btn-icon { display: inline-flex; font-size: 0.95rem; }
   .btn-nav .btn-label { display: none; }
 }
 

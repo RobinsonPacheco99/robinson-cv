@@ -5,8 +5,8 @@ const cvData = {
   title: 'Egresado de Ingeniería en TI',
   location: 'Pasaje, El Oro, Ecuador',
   contact: [
-    { label: 'robinpacheco87@gmail.com', title: 'Correo', icon: '✉', href: 'mailto:robinpacheco87@gmail.com?subject=Contacto%20desde%20tu%20CV' },
-    { label: 'LinkedIn', title: 'LinkedIn', icon: '🔗', href: 'https://www.linkedin.com/in/robinson-pacheco-062656325/' },
+    { label: 'robinpacheco87@gmail.com', title: 'Correo', icon: 'mail', href: 'mailto:robinpacheco87@gmail.com?subject=Contacto%20desde%20tu%20CV' },
+    { label: 'LinkedIn', title: 'LinkedIn', icon: 'linkedin', href: 'https://www.linkedin.com/in/robinson-pacheco-062656325/' },
   ],
   summary:
     'Egresado de Ingeniería en TI enfocado en el desarrollo de software moderno. Utilizo asistentes de Inteligencia Artificial para optimizar código y potenciar mi productividad. Combino bases sólidas en front-end y bases de datos con conocimientos prácticos en QA, garantizando así productos robustos y funcionales.',
@@ -23,9 +23,9 @@ const cvData = {
     },
   ],
   projects: [
-    { name: 'App Restaurante', desc: 'Sistema de gestión de pedidos y menús para restaurantes.', icon: '🍽️' },
-    { name: 'App Bancaria', desc: 'Plataforma de operaciones bancarias y gestión de cuentas.', icon: '🏦' },
-    { name: 'App Tienda de Ropa', desc: 'E-commerce para venta de ropa con carrito de compras.', icon: '👕' },
+    { name: 'App Restaurante', desc: 'Sistema de gestión de pedidos y menús para restaurantes.', icon: 'utensils' },
+    { name: 'App Bancaria', desc: 'Plataforma de operaciones bancarias y gestión de cuentas.', icon: 'bank' },
+    { name: 'App Tienda de Ropa', desc: 'E-commerce para venta de ropa con carrito de compras.', icon: 'shirt' },
   ],
   education: [
     {
@@ -242,10 +242,113 @@ function StatCard({ number, label, animate }) {
   )
 }
 
-function LinkedInIcon() {
+/* Iconos de trazo sobre una rejilla de 24: mismo grosor y remates redondeados
+   para que todos se lean como una sola familia. Los de marca van rellenos. */
+const icons = {
+  mail: (
+    <>
+      <rect x="2" y="4" width="20" height="16" rx="2" />
+      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+    </>
+  ),
+  linkedin: {
+    filled: true,
+    body: <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z" />,
+  },
+  pin: (
+    <>
+      <path d="M20 10c0 4.99-5.54 10.19-7.4 11.8a1 1 0 0 1-1.2 0C9.54 20.19 4 14.99 4 10a8 8 0 0 1 16 0" />
+      <circle cx="12" cy="10" r="3" />
+    </>
+  ),
+  sparkle: <path d="M12 3l1.9 4.6L18.5 9.5l-4.6 1.9L12 16l-1.9-4.6L5.5 9.5l4.6-1.9z" />,
+  code: (
+    <>
+      <path d="m16 18 6-6-6-6" />
+      <path d="m8 6-6 6 6 6" />
+    </>
+  ),
+  utensils: (
+    <>
+      <path d="M3 2v7a3 3 0 0 0 3 3 3 3 0 0 0 3-3V2" />
+      <path d="M6 12v10" />
+      <path d="M18 2a3 3 0 0 0-3 3v6h6V5a3 3 0 0 0-3-3" />
+      <path d="M18 11v11" />
+    </>
+  ),
+  bank: (
+    <>
+      <path d="m2 8 10-5 10 5" />
+      <path d="M4 10h16" />
+      <path d="M6 10v8" />
+      <path d="M10 10v8" />
+      <path d="M14 10v8" />
+      <path d="M18 10v8" />
+      <path d="M3 22h18" />
+    </>
+  ),
+  shirt: <path d="M20.38 3.46 16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.47a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.47a2 2 0 0 0-1.34-2.23z" />,
+  graduation: (
+    <>
+      <path d="M21.4 10.92a1 1 0 0 0 0-1.84L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.84l8.57 3.9a2 2 0 0 0 1.66 0z" />
+      <path d="M22 10v6" />
+      <path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5" />
+    </>
+  ),
+  award: (
+    <>
+      <circle cx="12" cy="8" r="6" />
+      <path d="M15.48 12.89 17 22l-5-3-5 3 1.52-9.11" />
+    </>
+  ),
+  download: (
+    <>
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+      <path d="m7 10 5 5 5-5" />
+      <path d="M12 15V3" />
+    </>
+  ),
+  arrowDown: (
+    <>
+      <path d="M12 5v14" />
+      <path d="m19 12-7 7-7-7" />
+    </>
+  ),
+  sun: (
+    <>
+      <circle cx="12" cy="12" r="4" />
+      <path d="M12 2v2" />
+      <path d="M12 20v2" />
+      <path d="m4.93 4.93 1.41 1.41" />
+      <path d="m17.66 17.66 1.41 1.41" />
+      <path d="M2 12h2" />
+      <path d="M20 12h2" />
+      <path d="m6.34 17.66-1.41 1.41" />
+      <path d="m19.07 4.93-1.41 1.41" />
+    </>
+  ),
+  moon: <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9z" />,
+}
+
+/** Se dimensiona con font-size (1em) y toma el color del texto que lo rodea. */
+function Icon({ name }) {
+  const icon = icons[name]
+  if (!icon) return null
+  const filled = icon.filled === true
   return (
-    <svg viewBox="0 0 24 24" width="1em" height="1em" fill="currentColor" aria-hidden="true">
-      <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.07 2.07 0 1 1 0-4.13 2.07 2.07 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45z" />
+    <svg
+      className="icon"
+      viewBox="0 0 24 24"
+      width="1em"
+      height="1em"
+      aria-hidden="true"
+      fill={filled ? 'currentColor' : 'none'}
+      stroke={filled ? 'none' : 'currentColor'}
+      strokeWidth="1.75"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      {filled ? icon.body : icon}
     </svg>
   )
 }
@@ -254,7 +357,7 @@ function ThemeToggle({ dark, onToggle }) {
   const label = dark ? 'Activar modo claro' : 'Activar modo oscuro'
   return (
     <button className="theme-toggle" onClick={onToggle} title={label} aria-label={label}>
-      {dark ? '☀️' : '🌙'}
+      <Icon name={dark ? 'sun' : 'moon'} />
     </button>
   )
 }
@@ -308,7 +411,7 @@ function Nav({ activeSection, scrollTo, initials, shortName, dark, onToggleTheme
         <div className="nav-actions">
           <ThemeToggle dark={dark} onToggle={onToggleTheme} />
           <a href="/Curriculum .pdf" download className="btn btn-primary btn-nav">
-            <span className="btn-icon" aria-hidden="true">⬇</span>
+            <span className="btn-icon"><Icon name="download" /></span>
             <span className="btn-label">Descargar CV</span>
           </a>
         </div>
@@ -407,18 +510,18 @@ function CV() {
           ) : (
             <img className="photo-big" src="/foto.jpg" alt={`Foto de ${name}`} onError={() => setPhotoError(true)} />
           )}
-          <span className="photo-badge" aria-hidden="true">💻</span>
+          <span className="photo-badge"><Icon name="code" /></span>
         </div>
 
         <div className="hero-identity">
-          <span className="hello-chip">👋 Hola, soy</span>
+          <span className="hello-chip"><Icon name="sparkle" /> Hola, soy</span>
           <h1 className="hero-name gradient-text">{name}</h1>
           <p className="hero-role"><Typewriter text={title} enabled={!reducedMotion} /></p>
         </div>
 
         {/* Solo ubicación: las vías de contacto viven una sola vez, en el pie. */}
         <span className="location-pill">
-          <span className="contact-icon" aria-hidden="true">📍</span>
+          <span className="contact-icon"><Icon name="pin" /></span>
           {location}
         </span>
 
@@ -465,7 +568,7 @@ function CV() {
                 <TiltCard key={proj.name} enabled={!reducedMotion}>
                   <article className="project-card">
                     <div className="project-glow" aria-hidden="true" />
-                    <div className="project-icon" aria-hidden="true">{proj.icon}</div>
+                    <div className="project-icon"><Icon name={proj.icon} /></div>
                     <h3>{proj.name}</h3>
                     <p>{proj.desc}</p>
                   </article>
@@ -480,7 +583,7 @@ function CV() {
           <div className="section-body">
             {education.map(edu => (
               <article key={edu.degree} className="edu-card">
-                <div className="edu-icon" aria-hidden="true">🎓</div>
+                <div className="edu-icon"><Icon name="graduation" /></div>
                 <div>
                   <strong>{edu.degree}</strong>
                   <em>{edu.institution}</em>
@@ -492,8 +595,9 @@ function CV() {
             <div className="cert-grid">
               {certificates.map(cert => (
                 <a key={cert.name} href={cert.file} target="_blank" rel="noopener noreferrer" className="cert-badge">
-                  <span aria-hidden="true">📜</span> {cert.name}
-                  <span className="cert-dl" aria-hidden="true">↓</span>
+                  <span className="cert-icon"><Icon name="award" /></span>
+                  {cert.name}
+                  <span className="cert-dl"><Icon name="arrowDown" /></span>
                 </a>
               ))}
             </div>
@@ -554,9 +658,7 @@ function CV() {
                 target={item.href.startsWith('http') ? '_blank' : undefined}
                 rel={item.href.startsWith('http') ? 'noopener noreferrer' : undefined}
               >
-                <span className="contact-icon" aria-hidden="true">
-                  {item.title === 'LinkedIn' ? <LinkedInIcon /> : item.icon}
-                </span>
+                <span className="contact-icon"><Icon name={item.icon} /></span>
                 <span className="sr-only">{item.label}</span>
               </a>
             </li>
