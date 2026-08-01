@@ -1,16 +1,28 @@
-# React + Vite
+# CV de Robinson Pacheco
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Currículum web de una sola página, construido con React y Vite. Incluye
+experiencia, proyectos, formación, certificados descargables en PDF y
+habilidades, con tema claro/oscuro y descarga del CV completo.
 
-Currently, two official plugins are available:
+## Desarrollo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```bash
+npm install
+npm run dev      # servidor de desarrollo
+npm run lint     # oxlint
+npm run build    # genera dist/
+npm run preview  # sirve dist/ para revisarlo
+```
 
-## React Compiler
+## Despliegue
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+El sitio se publica en Cloudflare Pages desde la rama `main`:
 
-## Expanding the Oxlint configuration
+- Comando de compilación: `npm run build`
+- Directorio de salida: `dist`
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## Estructura
+
+- `src/components/CV.jsx` — todo el contenido del CV (datos y componentes).
+- `src/App.css` — estilos y variables de tema.
+- `public/` — foto, favicon y los PDF del CV y los certificados.
