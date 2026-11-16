@@ -2,14 +2,14 @@ import { useState, useEffect, useMemo, useRef, useCallback } from 'react'
 
 const cvData = {
   name: 'Robinson Pacheco',
-  title: 'Egresado de Ingeniería en TI',
+  title: 'Ingeniero en TI',
   location: 'Pasaje, El Oro, Ecuador',
   contact: [
     { label: 'robinpacheco87@gmail.com', title: 'Correo', icon: 'mail', href: 'mailto:robinpacheco87@gmail.com?subject=Contacto%20desde%20tu%20CV' },
     { label: 'LinkedIn', title: 'LinkedIn', icon: 'linkedin', href: 'https://www.linkedin.com/in/robinson-pacheco-062656325/' },
   ],
   summary:
-    'Egresado de Ingeniería en TI enfocado en el desarrollo de software moderno. Utilizo asistentes de Inteligencia Artificial para optimizar código y potenciar mi productividad. Combino bases sólidas en front-end y bases de datos con conocimientos prácticos en QA, garantizando así productos robustos y funcionales.',
+    'Ingeniero en TI enfocado en el desarrollo de software moderno. Utilizo asistentes de Inteligencia Artificial para optimizar código y potenciar mi productividad. Combino bases sólidas en front-end y bases de datos con conocimientos prácticos en QA, garantizando así productos robustos y funcionales.',
   experience: [
     {
       company: 'Gobierno Autónomo Descentralizado de Pasaje (GAD Pasaje)',
@@ -31,7 +31,7 @@ const cvData = {
     {
       degree: 'Ingeniería en Tecnologías de la Información',
       institution: 'Universidad Técnica de Machala',
-      period: 'Egresado',
+      period: 'Titulado',
     },
   ],
   certificates: [
