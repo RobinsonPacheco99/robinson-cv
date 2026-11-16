@@ -39,6 +39,7 @@ const cvData = {
     { name: 'Gestión de Amenazas Cibernéticas', file: '/Gestión de Amenazas Cibernéticas.pdf' },
     { name: 'Partner NDG Linux Unhatched', file: '/Partner NDG Linux Unhatched.pdf' },
     { name: 'Certificado de prácticas pre-profesionales GAD de Pasaje', file: '/Certificado de prácticas pre-profesionales GAD de pasaje.pdf' },
+    { name: 'Título de Ingeniero en Tecnologías de la Información', file: '/Título de Ingeniero en Tecnologías de la Información.pdf' },
   ],
   skills: [
     'Desarrollo Front-end',
